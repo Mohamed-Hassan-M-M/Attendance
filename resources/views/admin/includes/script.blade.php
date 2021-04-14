@@ -39,6 +39,16 @@
             }
         });
     });
+    function checkLang(strtmp){
+        switch (strtmp) {
+            case 'day off':
+                @if(app()->getLocale() == 'ar') return 'أجازة'; @else return 'day off'; @endif
+            case 'absent':
+                @if(app()->getLocale() == 'ar') return 'غياب'; @else return 'absent'; @endif
+            default:
+                return strtmp;
+        }
+    }
 </script>
 <!-- Bootstrap RTL -->
 @if(LaravelLocalization::getCurrentLocaleName() == 'Arabic')

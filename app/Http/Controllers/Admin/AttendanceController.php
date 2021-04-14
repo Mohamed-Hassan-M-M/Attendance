@@ -96,8 +96,8 @@ class AttendanceController extends Controller
 
         return response()->json([
             'employee'=>$employee,
-            'entity'=>$employee->entity->name,
-            'department'=>$employee->department->name,
+            'entity'=>$employee->entity,
+            'department'=>$employee->department,
             'from_schedule'=>$from_schedule,
             'from_actual'=>$from_actual,
             'to_schedule'=>$to_schedule,
@@ -208,8 +208,8 @@ class AttendanceController extends Controller
 
         return response()->json([
             'employee'=>$employee,
-            'entity'=>$employee->entity->name,
-            'department'=>$employee->department->name,
+            'entity'=>$employee->entity,
+            'department'=>$employee->department,
             'from_schedule'=>$from_schedule,
             'from_actual'=>$from_actual,
             'to_schedule'=>$to_schedule,
@@ -350,7 +350,7 @@ class AttendanceController extends Controller
 
         return response()->json([
             'employee'=>$employee,
-            'department'=>$employee->department->name,
+            'department'=>$employee->department,
             'from_schedule'=>$from_schedule,
             'from_actual'=>$from_actual,
             'to_schedule'=>$to_schedule,

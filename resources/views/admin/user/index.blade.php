@@ -51,14 +51,14 @@
                                     <td>
                                         @if(!$user->hasRole('Super Admin'))
                                         <a href="{{url("user/{$user->id}/edit")}}" class="btn btn-success btn-xs"><i
-                                                class="fa fa-edit"></i>{{__('messages.Edit')}}</a>
+                                                class="fa fa-edit"></i> {{__('messages.Edit')}}</a>
                                         @endif
                                     </td>
                                     <td>
                                         @if(!$user->hasRole('Super Admin'))
                                         <form action="{{url("user/{$user->id}")}}" method="post">
                                             <button class="btn btn-danger btn-xs confirm-del"><i
-                                                    class="fa fa-trash-o"></i>{{__('messages.Delete')}}</button>
+                                                    class="fa fa-trash"></i> {{__('messages.Delete')}}</button>
                                             @method('DELETE')
                                             @csrf
                                         </form>

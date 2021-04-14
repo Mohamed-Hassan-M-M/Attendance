@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create New Department</h1>
+                    <h1>{{__('messages.Create New Department')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">Home</a></li>
-                        <li class="breadcrumb-item active">Create</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">{{__('messages.Home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.Create')}}</li>
                     </ol>
                 </div>
             </div>
@@ -23,13 +23,11 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Create Form</h3>
+                        <h3 class="card-title">{{__('messages.Create Form')}}</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                     class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                    class="fas fa-remove"></i></button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -39,17 +37,28 @@
 
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">{{__('messages.Name_en')}}</label>
                                     <input type="text" class="form-control" required name="name"
-                                           placeholder="Enter Name">
+                                           placeholder="{{__('messages.Enter Name en')}}">
                                     @error('name')
                                     <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
 
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="name_ar">{{__('messages.Name_ar')}}</label>
+                                    <input type="text" class="form-control" required name="name_ar"
+                                           placeholder="{{__('messages.Enter Name ar')}}">
+                                    @error('name_ar')
+                                    <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="m-auto">
-                                <button class="btn btn-primary">Create</button>
+                                <button class="btn btn-primary">{{__('messages.Create')}}</button>
                             </div>
 
                         </div>

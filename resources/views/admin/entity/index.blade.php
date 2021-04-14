@@ -46,11 +46,11 @@
                                         <td><a href="{{url('entity/'. $entity->id)}}">@if(app()->getLocale() == 'ar'){{$entity->name_ar}}@else{{$entity->name}}@endif</a></td>
                                         <td>{{$entity->phone}}</td>
                                         <td><a href="{{url("entity/{$entity->id}/edit")}}" class="btn btn-success btn-xs"><i
-                                                    class="fa fa-edit"></i>{{__('messages.Edit')}}</a></td>
+                                                    class="fa fa-edit"></i> {{__('messages.Edit')}}</a></td>
                                         <td>
                                             <form action="{{url("entity/{$entity->id}")}}" method="post">
                                                 <button class="btn btn-danger btn-xs confirm-del"><i
-                                                        class="fa fa-trash-o"></i>{{__('messages.Delete')}}</button>
+                                                        class="fa fa-trash"></i> {{__('messages.Delete')}}</button>
                                                 @method('DELETE')
                                                 @csrf
                                             </form>

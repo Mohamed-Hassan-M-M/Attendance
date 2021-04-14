@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>"{{ $employee->firstname }}  {{$employee->lastname}}" Working Hours</h1>
+                    <h1>"{{(app()->getLocale() == 'ar')?$employee->firstname_ar.' '.$employee->lastname_ar : $employee->firstname.' '.$employee->lastname}}" {{__('messages.Working Hours')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">Home</a></li>
-                        <li class="breadcrumb-item active">View</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">{{__('messages.Home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.View')}}</li>
                     </ol>
                 </div>
             </div>
@@ -22,13 +22,11 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">View Form</h3>
+                    <h3 class="card-title">{{__('messages.View Form')}}</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                 class="fas fa-minus"></i></button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                class="fas fa-remove"></i></button>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -38,31 +36,31 @@
 
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" disabled name="name" value="{{ $employee->firstname }}  {{$employee->lastname}}">
+                                <label for="name">{{__('messages.Name')}}</label>
+                                <input type="text" class="form-control" disabled name="name" value="{{ (app()->getLocale() == 'ar')?$employee->firstname_ar.' '.$employee->lastname_ar : $employee->firstname.' '.$employee->lastname}}">
                             </div>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
-                                <label for="department">Department</label>
-                                <input type="text" class="form-control" disabled name="department" value="{{ $employee->department->name }}">
+                                <label for="department">{{__('messages.Department')}}</label>
+                                <input type="text" class="form-control" disabled name="department" value="{{ (app()->getLocale() == 'ar')?$employee->department->name_ar : $employee->department->name}}">
                             </div>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <div class="card">
                                 <!-- /.card-header -->
-                                <div class="card-header font-weight-bold">Working Hours</div>
+                                <div class="card-header font-weight-bold">{{__('messages.Working Hours')}}</div>
 
                                 <div class="card-body">
                                     <table id="table" class="table table-bordered table-hover text-center">
                                         <thead>
                                         <tr>
                                             <th><input id="select-all2" type="checkbox" style="width: auto; display: none;" class="mr-2"><label for='select-all'>Days</label></th>
-                                            <th>DayOff</th>
-                                            <th>CheckIn</th>
-                                            <th>CheckOut</th>
+                                            <th>{{__('messages.DayOff')}}</th>
+                                            <th>{{__('messages.CheckIn')}}</th>
+                                            <th>{{__('messages.CheckOut')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -70,17 +68,17 @@
                                             <tr>
                                                 <td>
                                                     <span class="d-block">{{$schedule->day}}</span>
-                                                    <span>{{$schedule->dayname}}</span>
+                                                    <span>{{__("messages.$schedule->dayname")}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="d-block">DayOff</span>
-                                                    <input type="checkbox" disabled @if($schedule->day_off == 1) checked @endif>
+                                                    <span class="d-block">{{__('messages.DayOff')}}</span>
+                                                    <input type="checkbox" @if($schedule->day_off == 1) checked @endif>
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control" disabled value="{{$schedule->from}} AM">
+                                                    <input type="text" class="form-control" disabled value="{{$schedule->from}}">
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control" disabled value="{{$schedule->to}} PM">
+                                                    <input type="text" class="form-control" disabled value="{{$schedule->to}}">
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -95,7 +93,7 @@
                         </div>
 
                         <div class="m-auto">
-                            <a href="{{ route('admin.schedule.index',$entity_id) }}" class="btn btn-primary">Back</a>
+                            <a href="{{ route('admin.schedule.index',$entity_id) }}" class="btn btn-primary">{{__('messages.Back')}}</a>
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,11 @@ class CreateRequest extends FormRequest
     {
         return [
             'firstname'=>'required',
+            'firstname_ar'=>'required',
             'lastname'=>'required',
+            'lastname_ar'=>'required',
+            'address'=>'required',
+            'address_ar'=>'required',
             'mobile'=>'required|unique:employees,mobile',
             'barcode'=>'required|unique:employees,barcode',
             'email'=>'nullable|unique:employees,email',

@@ -25,7 +25,11 @@ class UpdateRequest extends FormRequest
     {
         return [
             'firstname'=>'required',
+            'firstname_ar'=>'required',
             'lastname'=>'required',
+            'lastname_ar'=>'required',
+            'address'=>'required',
+            'address_ar'=>'required',
             'mobile'=>'required|unique:employees,mobile,'.$this->id,
             'barcode'=>'required|unique:employees,barcode,'.$this->id,
             'email'=>'nullable|unique:employees,email,'.$this->id,

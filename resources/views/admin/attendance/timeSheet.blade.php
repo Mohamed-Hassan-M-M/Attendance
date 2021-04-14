@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>TimeSheet</h1>
+                    <h1>{{__('messages.TimeSheet')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">Home</a></li>
-                        <li class="breadcrumb-item active">TimeSheet</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">{{__('messages.Home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.TimeSheet')}}</li>
                     </ol>
                 </div>
             </div>
@@ -31,15 +31,15 @@
                                 @csrf
                                 <div class="row text-center">
                                     <div class="col-md-3">
-                                        <label>From</label>
+                                        <label>{{__('messages.From')}}</label>
                                         <input type="date" name="from" style="width: 100%" id="from" class="mb-5 mr-3 form-control" placeholder="Mm/Dd/Yyyy"/>
                                     </div>
                                     <div class="col-md-3">
-                                        <label>To</label>
+                                        <label>{{__('messages.To')}}</label>
                                         <input type="date" name="to" style="width: 100%" id="to" class="mb-5 mr-3 form-control" placeholder="Mm/Dd/Yyyy"/>
                                     </div>
                                     <div class="col-md-3">
-                                        <label>Employee ID</label>
+                                        <label>{{__('messages.Employee ID')}}</label>
                                         <input type="number" name="employee_id" style="width: 100%" id="employee_id" class="mb-5 form-control"/>
                                     </div>
 
@@ -50,16 +50,16 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Company</th>
-                                        <th>Department</th>
-                                        <th>Date</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Actual In</th>
-                                        <th>Actual Out</th>
-                                        <th>V.In</th>
-                                        <th>V.Out</th>
+                                        <th>{{__('messages.Name')}}</th>
+                                        <th>{{__('messages.Company')}}</th>
+                                        <th>{{__('messages.Department')}}</th>
+                                        <th>{{__('messages.Date')}}</th>
+                                        <th>{{__('messages.From')}}</th>
+                                        <th>{{__('messages.To')}}</th>
+                                        <th>{{__('messages.Actual In')}}</th>
+                                        <th>{{__('messages.Actual Out')}}</th>
+                                        <th>{{__('messages.V.In')}}</th>
+                                        <th>{{__('messages.V.Out')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,14 +93,6 @@
                         processData: false,
                         contentType: false,
                         success:function (data){
-
-                            console.log(data.employee);
-                            console.log(data.from_schedule);
-                            console.log(data.from_actual);
-                            console.log(data.to_schedule);
-                            console.log(data.to_actual);
-                            console.log(data.dates);
-
                                 $('tbody').html('');
                                 $.each(data.to_actual, function (index, emp) {
                                     $('tbody').append(`<tr>`+
@@ -108,34 +100,34 @@
                                         (index+1) +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.employee.firstname + data.employee.lastname +
+                                        @if(app()->getLocale() == 'ar') data.employee.firstname_ar +' '+data.employee.lastname_ar + @else data.employee.firstname +' '+data.employee.lastname + @endif
                                                         `</td>`+
                                                         `<td>`+
-                                        data.entity +
+                                        @if(app()->getLocale() == 'ar') data.entity.name_ar + @else data.entity.name + @endif
                                                         `</td>`+
                                                         `<td>`+
-                                        data.department +
+                                        @if(app()->getLocale() == 'ar') data.department.name_ar + @else data.department.name + @endif
                                                         `</td>`+
                                                         `<td>`+
                                         data.dates[index] +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.from_schedule[index] +
+                                        checkLang(data.from_schedule[index]) +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.to_schedule[index] +
+                                        checkLang(data.to_schedule[index]) +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.from_actual[index] +
+                                        checkLang(data.from_actual[index]) +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.to_actual[index] +
+                                        checkLang(data.to_actual[index]) +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.v_in[index] +
+                                        checkLang(data.v_in[index]) +
                                                         `</td>`+
                                                         `<td>`+
-                                        data.v_out[index] +
+                                        checkLang(data.v_out[index]) +
                                                         `</td>`+
                                                     `</tr>`);
                                 });

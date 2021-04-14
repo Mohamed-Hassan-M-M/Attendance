@@ -44,11 +44,11 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td><a href="{{url('role/'. $role->id)}}">{{$role->name}}</a></td>
                                         <td><a href="{{url("role/{$role->id}/edit")}}" class="btn btn-success btn-xs"><i
-                                                    class="fa fa-edit"></i>{{__('messages.Edit')}}</a></td>
+                                                    class="fa fa-edit"></i> {{__('messages.Edit')}}</a></td>
                                         <td>
                                             <form action="{{url("role/{$role->id}")}}" method="post">
                                                 <button class="btn btn-danger btn-xs confirm-del"><i
-                                                        class="fa fa-trash-o"></i>{{__('messages.Delete')}}</button>
+                                                        class="fa fa-trash"></i> {{__('messages.Delete')}}</button>
                                                 @method('DELETE')
                                                 @csrf
                                             </form>

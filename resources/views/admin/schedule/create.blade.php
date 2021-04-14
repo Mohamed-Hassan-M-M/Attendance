@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create New Schedule</h1>
+                    <h1>{{__('messages.Create New Schedule')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">Home</a></li>
-                        <li class="breadcrumb-item active">Create</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.home', $entity_id)}}">{{__('messages.Home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.Create')}}</li>
                     </ol>
                 </div>
             </div>
@@ -22,13 +22,11 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Create Form</h3>
+                        <h3 class="card-title">{{__('messages.Create Form')}}</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                     class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                    class="fas fa-remove"></i></button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -41,38 +39,38 @@
                                     @csrf
                                     <!-- progressbar -->
                                     <ul id="progressbar">
-                                        <li class="active">Schedule Filter</li>
-                                        <li>Select Employee</li>
-                                        <li>Date</li>
+                                        <li class="active">{{__('messages.Schedule Filter')}}</li>
+                                        <li>{{__('messages.Select Employee')}}</li>
+                                        <li>{{__('messages.Date')}}</li>
                                     </ul>
                                     <!-- fieldsets -->
                                     <fieldset>
-                                        <h2 class="fs-title mb-5">Schedule Filter</h2>
+                                        <h2 class="fs-title mb-5">{{__('messages.Schedule Filter')}}</h2>
 
                                         <div class="col-md-12 mb-4 mt-5 d-inline-block">
                                             <div class="form-group">
-                                                <label for="departments" class="d-inline-block mr-4">Department</label>
+                                                <label for="departments" class="d-inline-block mr-4">{{__('messages.Department')}}</label>
                                                 <select id="departments" name="department_id" required
                                                         class="form-control select2 select2-hidden-accessible d-inline-block" style="width: 50%;"
                                                         data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                                    <option selected value="">Choose Department</option>
+                                                    <option selected value="">{{__('messages.Choose Department')}}</option>
                                                     @foreach($departments as $department)
-                                                        <option value="{{$department->id}}">{{$department->name}}</option>
+                                                        <option value="{{$department->id}}">{{(app()->getLocale() == 'ar')?$department->name_ar : $department->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
 
-                                        <input type="button" name="next" class="next action-button first_next" style="display:none" value="Next"/>
+                                        <input type="button" name="next" class="next action-button first_next" style="display:none" value="{{__('messages.Next')}}"/>
                                     </fieldset>
                                     <fieldset>
-                                        <h2 class="fs-title mb-5">Select Employee</h2>
+                                        <h2 class="fs-title mb-5">{{__('messages.Select Employee')}}</h2>
 
                                         <table id="table" class="table table-bordered table-hover mt-5 mb-5">
                                             <thead>
                                                 <tr>
                                                     <th width="50"><input id="select-all" type="checkbox"></th>
-                                                    <th style="text-align: left">Name</th>
+                                                    <th style="text-align: @if(app()->getLocale() == 'ar') right @else left @endif">{{__('messages.Name')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="all_emp">
@@ -80,24 +78,24 @@
                                             </tbody>
                                         </table>
 
-                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                                        <input type="button" name="next" class="next action-button" value="Next"/>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="{{__('messages.Previous')}}"/>
+                                        <input type="button" name="next" class="next action-button" value="{{__('messages.Next')}}"/>
                                     </fieldset>
                                     <fieldset>
-                                        <h2 class="fs-title mb-4">Date</h2>
+                                        <h2 class="fs-title mb-4">{{__('messages.Date')}}</h2>
 
                                         <input type="date" id="from" class="mb-3" placeholder="Mm/Dd/Yyyy"/>
                                         <input type="date" id="to" class="mb-5" placeholder="Mm/Dd/Yyyy"/>
 
-                                        <h2 class="fs-title mb-4">Day and Time</h2>
+                                        <h2 class="fs-title mb-4">{{__('messages.Day and Time')}}</h2>
 
                                         <table id="table" class="table table-bordered table-hover mt-5 mb-5 text-center">
                                             <thead>
                                                 <tr>
-                                                    <th><input id="select-all2" type="checkbox" style="width: auto; display: none;" class="mr-2"><label for='select-all'>Days</label></th>
-                                                    <th>DayOff</th>
-                                                    <th>CheckIn</th>
-                                                    <th>CheckOut</th>
+                                                    <th><input id="select-all2" type="checkbox" style="width: auto; display: none;" class="mr-2"><label for='select-all'>{{__('messages.Days')}}</label></th>
+                                                    <th>{{__('messages.DayOff')}}</th>
+                                                    <th>{{__('messages.CheckIn')}}</th>
+                                                    <th>{{__('messages.CheckOut')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="all_days">
@@ -105,8 +103,8 @@
                                             </tbody>
                                         </table>
 
-                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                                        <input type="submit" class="submit action-button" value="Submit"/>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="{{__('messages.Previous')}}"/>
+                                        <input type="submit" class="submit action-button" value="{{__('messages.Submit')}}"/>
                                     </fieldset>
                                 </form>
                             </div>
@@ -399,7 +397,7 @@
                     $.each(data.employees, function (index, emp) {
                         $('#all_emp').append(`<tr>`+
                                             `<td><input type="checkbox" class="emp_check" name="employee_id[]" value="${emp.id}"></td>`+
-                                            `<td style="text-align: left">${emp.firstname} ${emp.lastname}</td>`+
+                                            `<td style="text-align: @if(app()->getLocale() == 'ar') right @else left @endif">@if(app()->getLocale() == 'ar') ${emp.firstname_ar} ${emp.lastname_ar} @else ${emp.firstname} ${emp.lastname} @endif</td>`+
                                         `</tr>`);
                     });
                 },
@@ -424,14 +422,14 @@
                                                 `<input type="checkbox" class="mr-2 day_check" checked name="day[]" style="width: auto;display: none;" value="${from.toLocaleDateString()}"> <span>`+getDayName(from.getDay())+`</span>`+
                                             `</td>`+
                                             `<td>`+
-                                                `<span class="d-block">DayOff</span>`+
+                                                `<span class="d-block">{{__("messages.DayOff")}}</span>`+
                                                 `<input type="checkbox" name="day_off[]" value="${from.toLocaleDateString()}">`+
                                             `</td>`+
                                             `<td>`+
-                                            `<input type="text" class="form-control" name="from[]" value="9:00 AM">`+
+                                            `<input type="text" class="form-control" name="from[]" value="09:00 am">`+
                                             `</td>`+
                                             `<td>`+
-                                            `<input type="text" class="form-control" name="to[]" value="5:00 PM">`+
+                                            `<input type="text" class="form-control" name="to[]" value="05:00 pm">`+
                                             `</td>`+
                                         `</tr>`);
                 from.setDate(from.getDate() + 1);
@@ -444,19 +442,19 @@
     function getDayName(daynumber){
         switch (daynumber) {
             case 0:
-                return 'Sunday';
+                return '{{__('messages.Sunday')}}';
             case 1:
-                return 'Monday';
+                return '{{__('messages.Monday')}}';
             case 2:
-                return 'Tuesday';
+                return '{{__('messages.Tuesday')}}';
             case 3:
-                return 'Wednesday';
+                return '{{__('messages.Wednesday')}}';
             case 4:
-                return 'Thursday';
+                return '{{__('messages.Thursday')}}';
             case 5:
-                return 'Friday';
+                return '{{__('messages.Friday')}}';
             case 6:
-                return 'Saturday';
+                return '{{__('messages.Saturday')}}';
         }
     }
 </script>

@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>['required','unique:departments,name,'.$this->id],
+            'name' =>['required'],
+            'name_ar' =>['required'],
         ];
     }
 

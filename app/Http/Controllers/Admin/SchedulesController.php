@@ -57,6 +57,9 @@ class SchedulesController extends Controller
         if(auth()->user()->hasRole('Admin')){
             $entity_id = auth()->user()->entity_id;
         }
+        if($request->has('employee_id') <= 0){
+            return redirect()->back();
+        }
         $request->merge(['entity_id' => $entity_id]);
         $request->merge(['employee_id' => json_encode($request->employee_id)]);
         foreach ($request->day as $index => $oneDay){
@@ -64,10 +67,11 @@ class SchedulesController extends Controller
             $working_hour->entity_id = $request->entity_id;
             $working_hour->department_id = $request->department_id;
             $working_hour->employees_id = $request->employee_id;
-            if(in_array($oneDay, $request->day_off)){
-                $working_hour->day_off = 1;
+            if($request->has('day_off')){
+                if(in_array($oneDay, $request->day_off)){
+                    $working_hour->day_off = 1;
+                }
             }
-
             $working_hour->day = date('Y/m/d',strtotime($oneDay));
             $working_hour->from = date("H:i", strtotime($request->from[$index]));
             $working_hour->to = date("H:i", strtotime($request->to[$index]));
@@ -94,8 +98,8 @@ class SchedulesController extends Controller
             $emps = (array)json_decode($schedule->employees_id);
             if(in_array($employee->id,$emps)){
                 $schedule['dayname'] = date('l', strtotime($schedule->day));
-                $schedule['from'] = Carbon::parse($schedule->from)->format('h:i');
-                $schedule['to'] = Carbon::parse($schedule->to)->format('h:i');
+                $schedule['from'] = Carbon::parse($schedule->from)->format('h:i a');
+                $schedule['to'] = Carbon::parse($schedule->to)->format('h:i a');
                 $array_schedules[] = $schedule;
             }
         }
